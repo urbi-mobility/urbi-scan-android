@@ -1,0 +1,85 @@
+//Version
+def appcompat_version = '1.2.0'
+def core_ktx_version = '1.3.2'
+def material_version = '1.2.1'
+
+def camerax_version = '1.0.0-beta08'
+def cameraxview_version = '1.0.0-alpha15'
+
+def mlkit_barcodescanning_version = '16.0.3'
+def mlkit_facedetection_version = '16.1.1'
+def mlkit_textrecognition_version = '16.1.1'
+
+def jmrtd_version = '0.7.18'
+def jj2000_version = '5.2'
+def jnbis_version = '1.1.0'
+def scuba_version = '0.0.20'
+def spongycastle_version = '1.58.0.0'
+
+ext {
+
+    gradle_plugin = '4.1.1'
+    kotlin_version = '1.4.10'
+
+    version_code = 1
+    version_name = '0.0.1'
+    min_sdk_version = 21
+    target_sdk_version = 30
+    compile_sdk_version = 30
+    build_tools_version = '29.0.3'
+
+    //ANDROID BASE
+    kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    core_ktx "androidx.core:core-ktx:$core_ktx_version"
+    appcompat = "androidx.appcompat:appcompat:$appcompat_version"
+    material = "com.google.android.material:material:$material_version"
+
+    android_base_group = [
+            kotlin,
+            core_ktx,
+            appcompat,
+            material
+    ]
+
+    // MLKIT
+    mlkit_facedetection = "com.google.android.gms:play-services-mlkit-face-detection:$mlkit_facedetection_version" //thin
+    mlkit_textrecognition = "com.google.android.gms:play-services-mlkit-text-recognition:$mlkit_textrecognition_version"    //thin
+    mlkit_barcodescanning = "com.google.mlkit:barcode-scanning:$mlkit_barcodescanning_version"    //bundled
+    mlkit_group = [
+            mlkit_facedetection,
+            mlkit_textrecognition,
+            mlkit_barcodescanning
+    ]
+
+    // NFC scan related libraries
+    jmrtd = "org.jmrtd:jmrtd:$jmrtd_version"
+    jj2000 = "edu.ucar:jj2000:$jj2000_version"
+    jnbis = "com.github.mhshams:jnbis:$jnbis_version"
+    scuba = "net.sf.scuba:scuba-sc-android:$scuba_version"
+    spongycastle = "com.madgag.spongycastle:prov:$spongycastle_version"
+
+
+    nfc_scan_tools = [
+            jmrtd,jj2000,
+            jnbis,scuba,
+            spongycastle
+    ]
+
+    // CAMERAX
+    // CameraX core library
+    camera_core = "androidx.camera:camera-core:$camerax_version"
+    // CameraX Camera2 extensions
+    camera_camera2 = "androidx.camera:camera-camera2:$camerax_version"
+    // CameraX Lifecycle library
+    camera_lifecycle = "androidx.camera:camera-lifecycle:$camerax_version"
+    // CameraX View class
+    camera_view = "androidx.camera:camera-view:$cameraxview_version"
+
+    camerax_group = [
+            camera_core,
+            camera_camera2,
+            camera_lifecycle,
+            camera_view
+    ]
+
+}
