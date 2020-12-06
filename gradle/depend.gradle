@@ -30,7 +30,7 @@ ext {
 
     //ANDROID BASE
     kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    core_ktx "androidx.core:core-ktx:$core_ktx_version"
+    core_ktx = "androidx.core:core-ktx:$core_ktx_version"
     appcompat = "androidx.appcompat:appcompat:$appcompat_version"
     material = "com.google.android.material:material:$material_version"
 
