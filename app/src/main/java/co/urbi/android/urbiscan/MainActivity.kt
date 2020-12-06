@@ -1,4 +1,4 @@
-package com.batsharing.urbiscan
+package co.urbi.android.urbiscan
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -8,7 +8,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.batsharing.urbiscan"
+        applicationId "co.urbi.android.urbiscan"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
