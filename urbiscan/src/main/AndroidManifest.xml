@@ -17,7 +17,18 @@
     <uses-permission android:name="android.permission.NFC" />
 
     <application>
-
+        <activity
+            android:name=".camera.CameraXPortraitActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".camera.CameraXBarcodeScanActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".camera.CameraXMrzScanActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

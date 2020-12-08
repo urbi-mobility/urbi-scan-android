@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name" translatable="false">UrbiScan</string>
+    <string name="scan_title" translatable="false">Pronto per la scansione</string>
+    <string name="scan_camera_message_c" translatable="false">C&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\n\nInquadra il codice presente sul retro della carta di identità elettronica</string>
+    <string name="scan_camera_message_p" translatable="false">P&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\n\nInquadra il codice presente sulla pagina n. 2 del passaporto elettronico</string>
+    <string name="scan_message_id" translatable="false">Appoggia ora la parte alta del tuo telefono sul tuo documento senza cover.\nAttendi qualche secondo per una corretta scansione. Mantieni documento e telefono fermi.</string>
+    <string name="scan_message_passport" translatable="false">Appoggia ora la parte alta del tuo telefono sul passaporto chiuso e senza cover.\nAttendi qualche secondo per una corretta scansione. Mantieni documento e telefono fermi.</string>
+    <string name="face_ok" translatable="false">SCATTA!</string>
+    <string name="face_not_ok" translatable="false">Inquadra solo il tuo viso su sfondo uniforme</string>
+
+    <string name="nfc_dialog_title" translatable="false">Attiva NFC</string>
+    <string name="nfc_dialog_title_failure" translatable="false">Operazione fallita</string>
+    <string name="nfc_dialog_message" translatable="false">Per poter leggere i dati dal tuo documento elettronico devi abilitare il sensore NFC dello smartphone</string>
+    <string name="nfc_dialog_message_failure" translatable="false">La scansione dei dati dal documento elettronico non è andata a buon fine.\nInserisci i dati manualmente</string>
+    <string name="nfc_dialog_positive" translatable="false">Impostazioni</string>
+    <string name="nfc_dialog_negative" translatable="false">Esci</string>
+    <string name="nfc_dialog_retry" translatable="false">Riprova</string>
+    <string name="nfc_dialog_close" translatable="false">Chiudi</string>
+    <!--    CHECK-->
+    <string name="capture_button_alt" translatable="false">Capture</string>
+    <string name="switch_camera_button_alt" translatable="false">Switch camera</string>
+    <string name="gallery_button_alt" translatable="false">Gallery</string>
+    <string name="back_button_alt" translatable="false">Back</string>
+    <string name="share_button_alt" translatable="false">Share</string>
+    <string name="share_hint" translatable="false">Share using</string>
+    <string name="capture_mode_camera" translatable="false">Camera</string>
+    <string name="capture_mode_hdr" translatable="false">HDR</string>
+    <string name="capture_mode_night" translatable="false">Night</string>
+    <string name="delete_button_alt" translatable="false">Delete</string>
+    <string name="delete_dialog" translatable="false">Delete current photo?</string>
+    <string name="delete_title" translatable="false">Confirm</string>
+
+    <string name="barcode_scan_header">Inquadra il QR code per avviare la corsa</string>
+    <string name="barcode_scan_manual">Digita codice</string>
+    <string name="barcode_scan_info">Il QR code verrà letto automaticamente.\nCerca di evitare ombre e riflessi</string>
+    <string name="barcode_scan_title">Avvio corsa</string>
+    <string name="barcode_scan_flash">Flash</string>
+</resources>

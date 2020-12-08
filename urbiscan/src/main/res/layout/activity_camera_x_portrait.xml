@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/camera_container"
+    android:background="@android:color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".camera.CameraXPortraitActivity">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/view_finder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:id="@+id/oval"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/camera_capture_button"
+        android:background="@drawable/portrait_oval_border"
+        android:layout_marginTop="@dimen/space28"
+        android:layout_marginBottom="@dimen/space62"
+        android:layout_marginStart="@dimen/space40"
+        android:layout_marginEnd="@dimen/space40"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageButton
+        android:id="@+id/camera_switch_button"
+        android:layout_width="@dimen/round_button_small"
+        android:layout_height="@dimen/round_button_small"
+        android:layout_marginEnd="@dimen/space24"
+        android:layout_marginBottom="@dimen/space8"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_switch"
+        android:layout_alignBottom="@id/camera_capture_button"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/switch_camera_button_alt" />
+
+    <ImageButton
+        android:id="@+id/camera_capture_button"
+        android:layout_width="@dimen/round_button_medium"
+        android:layout_height="@dimen/round_button_medium"
+        android:layout_marginBottom="@dimen/shutter_button_margin"
+        android:scaleType="fitCenter"
+        android:background="@drawable/ic_shutter"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/capture_button_alt" />
+</RelativeLayout>

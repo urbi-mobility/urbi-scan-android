@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="UrbiScanTheme" parent = "@style/Theme.AppCompat.NoActionBar">
+        <item name="attrColorBackground">@android:color/white</item>
+        <item name="attrColorToolbar">@color/colorPrimaryDark</item>
+        <item name="attrColorIcons">@color/colorPrimary</item>
+
+        <item name="attrFontTitle">@font/roboto_medium</item>
+        <item name="attrFontBody">@font/roboto_regular</item>
+
+        <item name="attrDimensTitle">@dimen/text16</item>
+        <item name="attrDimensBody">@dimen/text14</item>
+    </style>
+
+    <style name="Title" parent="@android:style/Widget.TextView">
+        <item name="android:fontFamily">?attr/attrFontTitle</item>
+        <item name="android:textSize">?attr/attrDimensTitle</item>
+    </style>
+
+    <style name="Body" parent="@android:style/Widget.TextView">
+        <item name="android:fontFamily">?attr/attrFontBody</item>
+        <item name="android:textSize">?attr/attrDimensBody</item>
+    </style>
+
+</resources>

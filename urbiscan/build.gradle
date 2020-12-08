@@ -31,11 +31,29 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    // The default value for each feature is shown below.
+    // You can change the value to override the default behavior.
+    buildFeatures {
+        // Determines whether to support View Binding.
+        // Note that the viewBinding.enabled property is now deprecated.
+        viewBinding = true
+        // Determines whether to support Data Binding.
+        // Note that the dataBinding.enabled property is now deprecated.
+        dataBinding = false
+    }
+
 }
 
 dependencies {
 
     implementation android_base_group
+    implementation constraintlayout
+    implementation kotlinx_coroutines
+
+    implementation nfc_scan_tools
+    api mlkit_group
+    implementation camerax_group
+
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="attrColorToolbar" format="color" />
+    <attr name="attrColorBackground" format="color" />
+    <attr name="attrColorIcons" format="color" />
+
+    <attr name="attrDimensTitle" format="reference" />
+    <attr name="attrDimensBody" format="reference" />
+
+    <attr name="attrFontTitle" format="reference" />
+    <attr name="attrFontBody" format="reference" />
+</resources>
