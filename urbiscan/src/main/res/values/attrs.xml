@@ -3,6 +3,7 @@
     <attr name="attrColorToolbar" format="color" />
     <attr name="attrColorBackground" format="color" />
     <attr name="attrColorIcons" format="color" />
+    <attr name="attrColorText" format="color" />
 
     <attr name="attrDimensTitle" format="reference" />
     <attr name="attrDimensBody" format="reference" />

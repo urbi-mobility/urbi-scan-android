@@ -40,7 +40,7 @@
 
     <dimen name="text14">14sp</dimen>
     <dimen name="text16">16sp</dimen>
-    <dimen name="text18">18sdp</dimen>
+    <dimen name="text18">18sp</dimen>
 
     <dimen name="spacing0">0.5dp</dimen>
     <dimen name="radius10">10dp</dimen>

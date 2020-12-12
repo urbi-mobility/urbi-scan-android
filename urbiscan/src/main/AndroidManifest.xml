@@ -29,6 +29,10 @@
             android:name=".camera.CameraXMrzScanActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".nfc.ScanNFCActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -5,6 +5,7 @@
         <item name="attrColorBackground">@android:color/white</item>
         <item name="attrColorToolbar">@color/colorPrimaryDark</item>
         <item name="attrColorIcons">@color/colorPrimary</item>
+        <item name="attrColorText">@color/colorPrimary</item>
 
         <item name="attrFontTitle">@font/roboto_medium</item>
         <item name="attrFontBody">@font/roboto_regular</item>
@@ -16,11 +17,13 @@
     <style name="Title" parent="@android:style/Widget.TextView">
         <item name="android:fontFamily">?attr/attrFontTitle</item>
         <item name="android:textSize">?attr/attrDimensTitle</item>
+        <item name="android:textColor">?attr/attrColorText</item>
     </style>
 
     <style name="Body" parent="@android:style/Widget.TextView">
         <item name="android:fontFamily">?attr/attrFontBody</item>
         <item name="android:textSize">?attr/attrDimensBody</item>
+        <item name="android:textColor">?attr/attrColorText</item>
     </style>
 
 </resources>
