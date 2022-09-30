@@ -116,6 +116,7 @@ class CameraXPortraitActivity : AnalyzingGuardActivity(), ActivityCompat.OnReque
                 FaceDetectResult.NO_FACE -> {
                     faceOK.set(false)
                 }
+                else -> {}
             }
             if (!faceOK.get()) {
                 Toast.makeText(this, getString(R.string.face_not_ok), Toast.LENGTH_LONG).show()
@@ -131,6 +132,7 @@ class CameraXPortraitActivity : AnalyzingGuardActivity(), ActivityCompat.OnReque
                 FaceDetectResult.FACE_OK -> {
                     faceOK.set(true)
                 }
+                else -> {}
             }
             if (faceOK.get()) {
                 Toast.makeText(this, getString(R.string.face_ok), Toast.LENGTH_SHORT).show()
