@@ -6,13 +6,10 @@ plugins {
 
 android {
     compileSdkVersion "$compile_sdk_version".toInteger()
-    buildToolsVersion "$build_tools_version"
 
     defaultConfig {
         minSdkVersion "$min_sdk_version".toInteger()
         targetSdkVersion "$target_sdk_version".toInteger()
-        versionCode "$version_code".toInteger()
-        versionName "$version_name"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"

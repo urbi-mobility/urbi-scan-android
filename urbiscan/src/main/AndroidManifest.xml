@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -20,18 +21,22 @@
         <activity
             android:name=".camera.CameraXPortraitActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".camera.CameraXBarcodeScanActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".camera.CameraXMrzScanActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="landscape" />
         <activity
             android:name=".nfc.ScanNFCActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="portrait" />
     </application>
 

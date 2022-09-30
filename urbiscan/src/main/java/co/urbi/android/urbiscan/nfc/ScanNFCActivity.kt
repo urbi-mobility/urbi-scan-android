@@ -10,17 +10,16 @@ import android.nfc.NfcManager
 import android.nfc.Tag
 import android.nfc.tech.IsoDep
 import android.os.Bundle
+import android.os.HandlerThread
+import android.os.Vibrator
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import co.urbi.android.urbiscan.R
 import co.urbi.android.urbiscan.databinding.ActivityScanNfcBinding
-import co.urbi.android.urbiscan.utils.PermanentAddress
-import co.urbi.android.urbiscan.utils.ScannedData
-import co.urbi.android.urbiscan.utils.ImageUtil
-import co.urbi.android.urbiscan.utils.JavaUtils
-import co.urbi.android.urbiscan.utils.ScanUtils
+import co.urbi.android.urbiscan.utils.*
 import kotlinx.coroutines.*
 import net.sf.scuba.smartcards.CardFileInputStream
 import net.sf.scuba.smartcards.CardService
@@ -40,7 +39,7 @@ import java.io.InputStream
 import java.security.Security
 import java.util.*
 
-class ScanNFCActivity : AppCompatActivity(), CoroutineScope by MainScope() {
+class ScanNFCActivity : AppCompatActivity(), CoroutineScope by MainScope(), NfcAdapter.ReaderCallback {
 
     private lateinit var binding: ActivityScanNfcBinding
     private lateinit var mrzInfo: MRZInfo
@@ -109,11 +108,20 @@ class ScanNFCActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     private fun startScan() {
         val adapter = NfcAdapter.getDefaultAdapter(this)
         if (adapter != null) {
-            val intent = Intent(applicationContext, this.javaClass)
-            intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
-            val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-            val filter = arrayOf(arrayOf("android.nfc.tech.IsoDep"))
-            adapter.enableForegroundDispatch(this, pendingIntent, null, filter)
+            val options = Bundle()
+            options.putInt(NfcAdapter.EXTRA_READER_PRESENCE_CHECK_DELAY, 250)
+
+            adapter.enableReaderMode(
+                this,
+                this,
+                NfcAdapter.FLAG_READER_NFC_A or
+                        NfcAdapter.FLAG_READER_NFC_B or
+                        NfcAdapter.FLAG_READER_NFC_F or
+                        NfcAdapter.FLAG_READER_NFC_V or
+                        NfcAdapter.FLAG_READER_NFC_BARCODE or
+                        NfcAdapter.FLAG_READER_NO_PLATFORM_SOUNDS,
+                options
+            )
         }
     }
 
@@ -121,20 +129,8 @@ class ScanNFCActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         NfcAdapter.getDefaultAdapter(this)?.disableForegroundDispatch(this)
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        intent?.let {
-            if (it.action == NfcAdapter.ACTION_TECH_DISCOVERED) {
-                val tag = it.extras?.getParcelable<Tag>(NfcAdapter.EXTRA_TAG)
-                if (tag?.techList?.contains("android.nfc.tech.IsoDep") == true) {
-                    val bacKey = BACKey(mrzInfo.documentNumber, mrzInfo.dateOfBirth, mrzInfo.dateOfExpiry)
-                    binding.loadingDots.visibility = View.VISIBLE
-                    launch {
-                        readData(IsoDep.get(tag), bacKey)
-                    }
-                }
-            }
-        }
-        super.onNewIntent(intent)
+    fun vibrate(millis: Long = 50) {
+        (getSystemService(Context.VIBRATOR_SERVICE) as Vibrator).vibrate(millis)
     }
 
     private suspend fun readData(isoDep: IsoDep, bacKey: BACKeySpec) = withContext(Dispatchers.IO) {
@@ -385,6 +381,7 @@ class ScanNFCActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         if (scannedData == null || bitmap == null) {
             promptFailure()
         } else {
+            Log.d("RESULTS", scannedData.toString())
             val resultIntent = Intent()
             resultIntent.apply { putExtra(ScanUtils.NFC_RESULT_DATA, scannedData) }
             resultIntent.apply { putExtra(ScanUtils.NFC_RESULT_BITMAP, bitmap) }
@@ -402,16 +399,27 @@ class ScanNFCActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
     private fun fullScreen() {
         window.decorView.systemUiVisibility = (
-            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_IMMERSIVE
-            )
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_IMMERSIVE
+                )
     }
 
     companion object {
         private val TAG: String = ScanNFCActivity::class.java.simpleName
+    }
+
+    override fun onTagDiscovered(tag: Tag?) {
+        vibrate()
+        runOnUiThread {
+            binding.loadingDots.isVisible=true
+        }
+        launch {
+            val bacKey = BACKey(mrzInfo.documentNumber, mrzInfo.dateOfBirth, mrzInfo.dateOfExpiry)
+            readData(IsoDep.get(tag), bacKey)
+        }
     }
 }
